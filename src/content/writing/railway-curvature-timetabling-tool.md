@@ -1,7 +1,7 @@
 ---
 title: "The Railway Curvature & Timetabling Tool"
 description: "A QGIS tool for asking \"how fast could this railway actually go?\""
-date: 2026-08-01
+date: 2026-11-18
 draft: false
 ---
 
@@ -37,5 +37,3 @@ The script is a single QGIS Python Console file, and the full code, with a detai
 It's licensed CC BY-NC 4.0: free to use, adapt, and share for personal, educational, or research purposes with attribution. If you'd want to use it for paid consulting work or as part of your job at a transit agency or engineering firm, just get in touch first. I'm generally happy to say yes, I just want to know it's being used.
 
 If you run it on your own corridor of interest, I'd genuinely like to hear what you find.
-
-<p class="note">Originally published on <a href="https://cartoview.blogspot.com/2026/08/the-railway-curvature-timetabling-tool.html">A Cartographic View</a>.</p>
