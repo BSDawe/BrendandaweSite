@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+const email = 'brendan@brendandawe.ca';
+---
+<Base title="Contact" description="Contact Brendan Dawe.">
+  <h1>Contact</h1>
+  <p>For consulting enquiries, speaking, or media, the best way to reach me is by email.</p>
+  <ul>
+    <li>Email: <a href={`mailto:${email}`}>{email}</a></li>
+    <!-- Add LinkedIn here once you have the URL: <li>LinkedIn: <a href="...">...</a></li> -->
+    <li>Location: Vancouver, BC</li>
+  </ul>
+</Base>

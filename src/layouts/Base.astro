@@ -1,0 +1,81 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description = 'Brendan Dawe: real estate and land economics, development strategy, Vancouver, BC.' } = Astro.props;
+const pageTitle = title ? `${title} | Brendan Dawe` : 'Brendan Dawe';
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/cv/', label: 'CV' },
+  { href: '/writing/', label: 'Writing' },
+  { href: '/contact/', label: 'Contact' },
+];
+---
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(path, Astro.site)} />
+    <link rel="alternate" type="application/rss+xml" title="Brendan Dawe" href="/rss.xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <style is:global>
+      :root {
+        --bg: #fbfaf7;
+        --fg: #1d2330;
+        --muted: #5b6475;
+        --accent: #1f4e79;
+        --rule: #e3e0d8;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --bg: #14171d; --fg: #e8e6e1; --muted: #9aa3b2; --accent: #8fb8e0; --rule: #2a2f3a; }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font: 18px/1.65 Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+      }
+      a { color: var(--accent); }
+      header, main, footer { max-width: 42rem; margin: 0 auto; padding: 0 1.25rem; }
+      header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 1.5rem; padding-top: 1.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+      .brand { font-weight: 700; text-decoration: none; color: var(--fg); letter-spacing: 0.01em; }
+      nav a { margin-left: 1.1rem; text-decoration: none; font: 600 0.9rem/1 system-ui, sans-serif; color: var(--muted); }
+      nav a:hover, nav a[aria-current='page'] { color: var(--accent); }
+      main { padding-top: 2rem; padding-bottom: 3rem; }
+      h1, h2, h3 { line-height: 1.25; }
+      h1 { font-size: 2rem; margin-top: 0; }
+      h2 { font-size: 1.25rem; margin-top: 2.2rem; }
+      .meta, .muted { color: var(--muted); font: 0.9rem/1.5 system-ui, sans-serif; }
+      .role { margin: 1.1rem 0; }
+      .role h3 { margin: 0; font-size: 1.05rem; }
+      .role p { margin: 0.2rem 0 0; }
+      ul.posts { list-style: none; padding: 0; }
+      ul.posts li { margin: 1.2rem 0; }
+      footer { border-top: 1px solid var(--rule); padding-top: 1rem; padding-bottom: 2rem; }
+      .button { display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--accent); border-radius: 4px; text-decoration: none; font: 600 0.9rem/1.2 system-ui, sans-serif; }
+      .note { border-left: 3px solid var(--rule); padding-left: 1rem; color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/">Brendan Dawe</a>
+      <nav aria-label="Main">
+        {nav.map((n) => (
+          <a href={n.href} aria-current={path === n.href ? 'page' : undefined}>{n.label}</a>
+        ))}
+      </nav>
+    </header>
+    <main><slot /></main>
+    <footer class="muted">
+      © {new Date().getFullYear()} Brendan Dawe · Vancouver, BC · <a href="/rss.xml">RSS</a>
+    </footer>
+  </body>
+</html>
