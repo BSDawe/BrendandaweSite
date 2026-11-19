@@ -1,7 +1,7 @@
 ---
 title: "The Railway Curvature & Timetabling Tool"
 description: "A QGIS tool for asking \"how fast could this railway actually go?\""
-date: 2026-11-18
+date: 2026-11-19
 draft: false
 ---
 
