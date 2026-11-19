@@ -6,8 +6,8 @@ const posts = (await getCollection('writing', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmt = new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 ---
-<Base title="Writing" description="Writing by Brendan Dawe on housing, development and land economics.">
-  <h1>Writing</h1>
+<Base title="Research and Analysis" description="Research and analysis by Brendan Dawe on housing, transit, development and land economics.">
+  <h1>Research and Analysis</h1>
   {posts.length === 0 ? (
     <p class="muted">Posts are coming soon.</p>
   ) : (

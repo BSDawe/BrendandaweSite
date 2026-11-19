@@ -6,7 +6,7 @@ export async function GET(context) {
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   return rss({
     title: 'Brendan Dawe',
-    description: 'Writing on housing, development and land economics.',
+    description: 'Research and analysis on housing, transit, development and land economics.',
     site: context.site,
     items: posts.map((p) => ({
       title: p.data.title,
