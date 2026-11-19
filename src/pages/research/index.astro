@@ -14,7 +14,7 @@ const fmt = new Intl.DateTimeFormat('en-CA', { year: 'numeric', month: 'long', d
     <ul class="posts">
       {posts.map((p) => (
         <li>
-          <a href={`/writing/${p.id}/`}><strong>{p.data.title}</strong></a><br />
+          <a href={`/research/${p.id}/`}><strong>{p.data.title}</strong></a><br />
           <span class="meta">{fmt.format(p.data.date)}</span><br />
           <span>{p.data.description}</span>
         </li>
