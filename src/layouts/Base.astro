@@ -1,4 +1,7 @@
 ---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/source-serif-4';
+
 interface Props {
   title?: string;
   description?: string;
@@ -28,45 +31,67 @@ const nav = [
     <meta property="og:image" content="https://brendandawe.ca/brendan-dawe.jpg" />
     <style is:global>
       :root {
-        --bg: #fbfaf7;
-        --fg: #1d2330;
-        --muted: #5b6475;
-        --accent: #1f4e79;
-        --rule: #e3e0d8;
+        --bg: #ffffff;
+        --fg: #1c1b20;
+        --muted: #62606b;
+        --accent: #a12f3c;
+        --accent-fg: #ffffff;
+        --tint: #f9eaec;
+        --rule: #ececf0;
+        --sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        --serif: 'Source Serif 4 Variable', Georgia, serif;
       }
       @media (prefers-color-scheme: dark) {
-        :root { --bg: #14171d; --fg: #e8e6e1; --muted: #9aa3b2; --accent: #8fb8e0; --rule: #2a2f3a; }
+        :root {
+          --bg: #16141a; --fg: #eeebef; --muted: #a29fac;
+          --accent: #ec8e98; --accent-fg: #1b1115; --tint: #2a1d22; --rule: #2b2831;
+        }
       }
       * { box-sizing: border-box; }
       body {
         margin: 0;
         background: var(--bg);
         color: var(--fg);
-        font: 18px/1.65 Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+        font: 17px/1.65 var(--sans);
+        border-top: 5px solid var(--accent);
+        -webkit-font-smoothing: antialiased;
       }
-      a { color: var(--accent); }
-      header, main, footer { max-width: 42rem; margin: 0 auto; padding: 0 1.25rem; }
-      header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 1.5rem; padding-top: 1.75rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-      .brand { font-weight: 700; text-decoration: none; color: var(--fg); letter-spacing: 0.01em; }
-      nav a { margin-left: 1.1rem; text-decoration: none; font: 600 0.9rem/1 system-ui, sans-serif; color: var(--muted); }
-      nav a:hover, nav a[aria-current='page'] { color: var(--accent); }
-      main { padding-top: 2rem; padding-bottom: 3rem; }
-      h1, h2, h3 { line-height: 1.25; }
-      h1 { font-size: 2rem; margin-top: 0; }
-      h2 { font-size: 1.25rem; margin-top: 2.2rem; }
-      .meta, .muted { color: var(--muted); font: 0.9rem/1.5 system-ui, sans-serif; }
-      .role { margin: 1.1rem 0; }
-      .role h3 { margin: 0; font-size: 1.05rem; }
-      .role p { margin: 0.2rem 0 0; }
+      a { color: var(--accent); text-underline-offset: 0.18em; }
+      header, main, footer { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem; }
+      header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem 1.5rem; padding-top: 1.5rem; padding-bottom: 1.25rem; }
+      .brand { font-weight: 700; font-size: 1.05rem; text-decoration: none; color: var(--fg); letter-spacing: -0.01em; }
+      nav { display: flex; gap: 1.25rem; }
+      nav a { text-decoration: none; font-weight: 500; font-size: 0.92rem; color: var(--muted); padding-bottom: 0.2rem; border-bottom: 2px solid transparent; }
+      nav a:hover { color: var(--fg); }
+      nav a[aria-current='page'] { color: var(--fg); border-bottom-color: var(--accent); }
+      main { padding-top: 1.5rem; padding-bottom: 3.5rem; }
+      h1, h2, h3 { font-family: var(--sans); line-height: 1.2; letter-spacing: -0.02em; }
+      h1 { font-size: 2.2rem; font-weight: 750; margin: 0 0 0.5rem; }
+      h2 { font-size: 1.2rem; font-weight: 700; margin: 2.4rem 0 0.6rem; }
+      h2::before { content: ''; display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--accent); margin-right: 0.55rem; vertical-align: 0.08em; }
+      h3 { font-size: 1.02rem; font-weight: 650; }
+      .meta, .muted { color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+      .role { margin: 1.2rem 0; }
+      .role h3 { margin: 0; }
+      .role p { margin: 0.25rem 0 0; }
       ul.posts { list-style: none; padding: 0; }
-      ul.posts li { margin: 1.2rem 0; }
+      ul.posts li { margin: 1.3rem 0; }
       footer { border-top: 1px solid var(--rule); padding-top: 1rem; padding-bottom: 2rem; }
-      .button { display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--accent); border-radius: 4px; text-decoration: none; font: 600 0.9rem/1.2 system-ui, sans-serif; }
-      .hero { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-      @media (min-width: 40rem) { .hero { grid-template-columns: 12rem 1fr; align-items: start; } }
-      .portrait { width: 100%; max-width: 12rem; height: auto; border-radius: 6px; }
-      .tagline { margin: -0.5rem 0 1rem; color: var(--muted); font: 600 0.95rem/1.4 system-ui, sans-serif; letter-spacing: 0.02em; }
-      .callout { border-left: 3px solid var(--accent); padding-left: 1rem; }
+
+      .button { display: inline-block; padding: 0.6rem 1.15rem; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 0.92rem; line-height: 1.2; background: var(--accent); color: var(--accent-fg); border: 2px solid var(--accent); }
+      .button:hover { filter: brightness(1.08); }
+      .button.ghost { background: transparent; color: var(--accent); }
+
+      .hero { display: grid; grid-template-columns: 1fr; gap: 1.75rem; justify-items: center; text-align: center; background: var(--tint); border-radius: 18px; padding: 2rem 1.5rem; }
+      @media (min-width: 40rem) { .hero { grid-template-columns: 11rem 1fr; justify-items: start; text-align: left; align-items: center; padding: 2.25rem 2.25rem; gap: 2.25rem; } }
+      .portrait { width: 11rem; height: 11rem; border-radius: 50%; object-fit: cover; object-position: center; border: 5px solid var(--bg); box-shadow: 0 0 0 3px var(--accent); }
+      .tagline { margin: 0 0 1rem; color: var(--accent); font-weight: 600; font-size: 0.95rem; letter-spacing: 0.04em; text-transform: uppercase; }
+      .callout { margin: 1.1rem 0; padding: 0.7rem 1rem; background: var(--bg); border-left: 4px solid var(--accent); border-radius: 4px; text-align: left; }
+      .buttons { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+      @media (max-width: 39.99rem) { .buttons { justify-content: center; } }
+
+      article { font-family: var(--serif); font-size: 1.12rem; line-height: 1.7; }
+      article h1, article h2, article h3, article .meta { font-family: var(--sans); }
       article li { margin: 0.35rem 0; }
       .note { border-left: 3px solid var(--rule); padding-left: 1rem; color: var(--muted); }
     </style>
